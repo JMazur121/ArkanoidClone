@@ -11,9 +11,6 @@ public:
     explicit GameController(GameScene *g, QObject *parent = nullptr);
 private:
     GameScene *gs;
-signals:
-
-public slots:
 };
 
 #endif // GAMECONTROLLER_H

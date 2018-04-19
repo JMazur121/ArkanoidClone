@@ -4,7 +4,7 @@
 PaddlePicker::PaddlePicker(QGraphicsScene *scene, QWidget *parent) : QGraphicsView(scene,parent), s(scene)
 {
     s->setBackgroundBrush(QBrush(QColor(255,255,255)));
-    ri = new QGraphicsRectItem(0,25,100,50);
+    ri = new PaddleRect(1);
     ri->setBrush(Qt::SolidPattern);
     s->addItem(ri);
     style = 1;
@@ -18,6 +18,7 @@ QColor PaddlePicker::getColor() const
 void PaddlePicker::updateColor(QColor newColor)
 {
     userColor = newColor;
+    ri->setColor(newColor);
     QBrush b = ri->brush();
     if(style == 4){
         QLinearGradient gradient(QPointF(0,25),QPointF(100,75));
@@ -33,9 +34,13 @@ void PaddlePicker::updateColor(QColor newColor)
 void PaddlePicker::setBrush(int val)
 {
     style = val;
+    ri->setStyle(val);
     QBrush b = ri->brush();
     b.setColor(userColor);
     switch (val) {
+    case 0:
+        ri->setBrush(Qt::NoBrush);
+        break;
     case 1:
         b.setStyle(Qt::SolidPattern);
         ri->setBrush(b);

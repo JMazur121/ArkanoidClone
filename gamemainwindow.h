@@ -25,6 +25,9 @@ private slots:
     void on_bBox_valueChanged(int arg1);
     void on_horizontalSlider_valueChanged(int value);
 
+signals:
+    void colorChanged(QColor newColor);
+    void brushChanged(int newBrush);
 private:
     Ui::GameMainWindow *ui;
     QWidget *first;

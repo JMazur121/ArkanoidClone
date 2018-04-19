@@ -2,6 +2,7 @@
 #define GAMESCENE_H
 
 #include <QGraphicsScene>
+
 #include <ball.h>
 #include <brick.h>
 #include <paddle.h>
@@ -17,7 +18,9 @@ public:
 private:
     Paddle* paddle;
     Ball* ball;
-    QSet<Brick> bricks;
+    QRandomGenerator *randomGenerator;
+    int initWidth;
+    int initHeight;
 };
 
 #endif // GAMESCENE_H
