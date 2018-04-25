@@ -4,10 +4,14 @@
 PaddlePicker::PaddlePicker(QGraphicsScene *scene, QWidget *parent) : QGraphicsView(scene,parent), s(scene)
 {
     s->setBackgroundBrush(QBrush(QColor(255,255,255)));
-    ri = new PaddleRect(1);
-    ri->setBrush(Qt::SolidPattern);
+    ri = new QGraphicsRectItem(0,25,100,50);
+    QBrush b = ri->brush();
+    b.setStyle(Qt::NoBrush);
+    b.setColor(QColor(100,100,100));
+    ri->setBrush(b);
     s->addItem(ri);
-    style = 1;
+    style = 0;
+    userColor = QColor(100,100,100);
 }
 
 QColor PaddlePicker::getColor() const
@@ -15,12 +19,16 @@ QColor PaddlePicker::getColor() const
     return userColor;
 }
 
+QBrush PaddlePicker::getSelectedBrush() const
+{
+    return ri->brush();
+}
+
 void PaddlePicker::updateColor(QColor newColor)
 {
     userColor = newColor;
-    ri->setColor(newColor);
     QBrush b = ri->brush();
-    if(style == 4){
+    if(style == 15){
         QLinearGradient gradient(QPointF(0,25),QPointF(100,75));
         gradient.setColorAt(0, Qt::white);
         gradient.setColorAt(1, userColor);
@@ -34,30 +42,18 @@ void PaddlePicker::updateColor(QColor newColor)
 void PaddlePicker::setBrush(int val)
 {
     style = val;
-    ri->setStyle(val);
     QBrush b = ri->brush();
     b.setColor(userColor);
-    switch (val) {
-    case 0:
-        ri->setBrush(Qt::NoBrush);
-        break;
-    case 1:
-        b.setStyle(Qt::SolidPattern);
+    if(val < 15)
+    {
+        b.setStyle(static_cast<Qt::BrushStyle>(val));
         ri->setBrush(b);
-        break;
-    case 2:
-        b.setStyle(Qt::Dense7Pattern);
-        ri->setBrush(b);
-        break;
-    case 3:
-        b.setStyle(Qt::CrossPattern);
-        ri->setBrush(b);
-        break;
-    case 4:
+    }
+    else
+    {
         QLinearGradient gradient(QPointF(0,25),QPointF(100,75));
         gradient.setColorAt(0, Qt::white);
         gradient.setColorAt(1, userColor);
         ri->setBrush(gradient);
-        break;
     }
 }

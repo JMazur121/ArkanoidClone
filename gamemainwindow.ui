@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>380</width>
-    <height>352</height>
+    <width>647</width>
+    <height>545</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -128,13 +128,13 @@
         <item>
          <widget class="QSlider" name="horizontalSlider">
           <property name="maximum">
-           <number>4</number>
+           <number>15</number>
           </property>
           <property name="pageStep">
            <number>1</number>
           </property>
           <property name="value">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -142,13 +142,6 @@
          </widget>
         </item>
        </layout>
-      </item>
-      <item>
-       <widget class="QPushButton" name="infoButton">
-        <property name="text">
-         <string>Informacje</string>
-        </property>
-       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="helpButton">
@@ -171,5 +164,22 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>exitButton</sender>
+   <signal>clicked()</signal>
+   <receiver>GameMainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>252</x>
+     <y>482</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>489</x>
+     <y>187</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

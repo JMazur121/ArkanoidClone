@@ -2,6 +2,7 @@
 #define GAMEMAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
 #include "graphicsview.h"
 #include "gamecontroller.h"
 #include "paddlepicker.h"
@@ -19,11 +20,11 @@ public:
     ~GameMainWindow();
 
 private slots:
-    void on_playButton_clicked();
-    void on_rBox_valueChanged(int arg1);
-    void on_gBox_valueChanged(int arg1);
-    void on_bBox_valueChanged(int arg1);
-    void on_horizontalSlider_valueChanged(int value);
+    void startGame();
+    void colorFromRGB();
+    void newBrush(int value);
+
+    void on_helpButton_clicked();
 
 signals:
     void colorChanged(QColor newColor);

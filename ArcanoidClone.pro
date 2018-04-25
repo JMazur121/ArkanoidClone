@@ -29,20 +29,21 @@ SOURCES += \
     gamescene.cpp \
     gamecontroller.cpp \
     brick.cpp \
-    graphicsview.cpp \
+    paddlepicker.cpp \
     paddle.cpp \
-    ball.cpp \
-    paddlepicker.cpp
+    graphicsview.cpp \
+    ball.cpp
 
 HEADERS += \
         gamemainwindow.h \
     gamescene.h \
     gamecontroller.h \
     brick.h \
-    graphicsview.h \
+    paddlepicker.h \
     paddle.h \
+    graphicsview.h \
     ball.h \
-    paddlepicker.h
+    types.h
 
 FORMS += \
         gamemainwindow.ui
